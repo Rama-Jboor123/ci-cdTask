@@ -1,11 +1,167 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Hello World</h1>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TaskFlow</title>
+
+    <link rel="stylesheet" href="./css/style.css" />
+  </head>
+
+  <body>
+    <div class="app-container">
+      <!-- Sidebar -->
+      <aside class="sidebar" id="sidebar">
+        <div>
+          <div class="logo">
+            <span class="logo-icon">✓</span>
+            <span>TaskFlow</span>
+          </div>
+
+          <nav class="sidebar-nav">
+            <button class="nav-item active" data-filter="all">
+              <span>▦</span>
+              All Tasks
+            </button>
+
+            <button class="nav-item" data-filter="active">
+              <span>○</span>
+              Active Tasks
+            </button>
+
+            <button class="nav-item" data-filter="completed">
+              <span>✓</span>
+              Completed Tasks
+            </button>
+          </nav>
+        </div>
+
+        <div class="sidebar-message">
+          <div class="plant-icon">🌱</div>
+          <p>Stay organized,<br />get things done.</p>
+          <span>♡</span>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+        <!-- Mobile Header -->
+        <header class="mobile-header">
+          <button class="menu-btn" id="menuBtn">☰</button>
+
+          <div class="mobile-logo">
+            <span class="logo-icon">✓</span>
+            <span>TaskFlow</span>
+          </div>
+        </header>
+
+        <section class="content-wrapper">
+          <div class="page-header">
+            <h1>My Tasks</h1>
+            <p>Organize your tasks and get more done 🌿</p>
+          </div>
+
+          <!-- Add Task -->
+          <div class="add-task-section">
+            <input
+              type="text"
+              id="taskInput"
+              placeholder="What needs to be done?"
+            />
+
+            <button id="addTaskBtn" class="primary-btn">
+              <span>+</span>
+              Add Task
+            </button>
+          </div>
+
+          <!-- Filters -->
+          <div class="filters">
+            <button class="filter-btn active" data-filter="all">All</button>
+
+            <button class="filter-btn" data-filter="active">Active</button>
+
+            <button class="filter-btn" data-filter="completed">
+              Completed
+            </button>
+          </div>
+
+          <!-- Error Message -->
+          <div id="errorMessage" class="error-message"></div>
+
+          <!-- Loading -->
+          <div id="loadingMessage" class="loading-message">
+            Loading tasks...
+          </div>
+
+          <!-- Tasks -->
+          <div id="todoList" class="todo-list"></div>
+
+          <!-- Empty State -->
+          <div id="emptyState" class="empty-state">
+            <div class="empty-icon">🌱</div>
+            <h2>No tasks yet</h2>
+            <p>Add your first task and start getting things done.</p>
+          </div>
+
+          <!-- Task Counter -->
+          <p id="taskCounter" class="task-counter"></p>
+        </section>
+      </main>
+    </div>
+
+    <!-- Mobile Sidebar Overlay -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+    <!-- Edit Modal -->
+    <div class="modal-overlay" id="editModal">
+      <div class="modal">
+        <div class="modal-header">
+          <h2>Edit Task</h2>
+          <button class="close-modal" id="closeEditModal">×</button>
+        </div>
+
+        <label for="editTaskInput"> Task description </label>
+
+        <textarea
+          id="editTaskInput"
+          placeholder="Enter task description..."
+        ></textarea>
+
+        <label class="checkbox-label">
+          <input type="checkbox" id="editCompleted" />
+          Mark as completed
+        </label>
+
+        <div class="modal-actions">
+          <button class="secondary-btn" id="cancelEditBtn">Cancel</button>
+
+          <button class="primary-btn" id="updateTaskBtn">Update Task</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Delete Modal -->
+    <div class="modal-overlay" id="deleteModal">
+      <div class="modal delete-modal">
+        <div class="delete-icon">🗑</div>
+
+        <h2>Delete Task</h2>
+
+        <p>
+          Are you sure you want to delete this task?
+          <br />
+          This action cannot be undone.
+        </p>
+
+        <div class="modal-actions">
+          <button class="secondary-btn" id="cancelDeleteBtn">Cancel</button>
+
+          <button class="danger-btn" id="confirmDeleteBtn">Delete</button>
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="./js/app.js"></script>
+  </body>
 </html>
